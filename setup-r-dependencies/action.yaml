@@ -155,6 +155,7 @@ runs:
             }
           cat("r-version=", r_version, "\n", file = Sys.getenv("GITHUB_OUTPUT"), sep = "", append = TRUE)
           needs <- sprintf("Config/Needs/%s", strsplit("${{ inputs.needs }}", "[[:space:],]+")[[1]])
+          if (length(needs) == 0L) needs <- NULL
           deps <- strsplit("${{ inputs.packages }}", "[[:space:],]+")[[1]]
           extra_deps <- strsplit("${{ inputs.extra-packages }}", "[[:space:],]+")[[1]]
           dir.create(".github", showWarnings=FALSE)
